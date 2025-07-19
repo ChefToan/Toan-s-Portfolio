@@ -5,26 +5,40 @@ import { ProjectsProps } from "@/types";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { GrLinkNext } from "react-icons/gr";
 import { FaArrowDown } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export default function Projects({ onSetExperienceSection }: ProjectsProps) {
     return (
-        <div
+        <motion.div
             className="max-md:hidden max-lg:col-span-1 max-lg:row-span-1 col-span-2 row-span-6 col-start-5 bg-spotify-light-dark rounded-xl overflow-hidden"
             id="projects"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-            <div className="p-4">
+            <motion.div 
+                className="p-4"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
                 <div className="flex gap-3 justify-center">
-                    <button
+                    <motion.button
                         className="flex items-center justify-center text-sm font-bold
             bg-spotify-green hover:bg-spotify-dark-green hover:scale-105
             px-5 py-2 rounded-full gap-2 transition-all duration-200
             min-w-[180px]"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         Featured Projects
                         <FaArrowDown className="text-base" />
-                    </button>
+                    </motion.button>
 
-                    <button
+                    <motion.button
                         className="flex items-center justify-center text-sm font-bold
             border border-[#727272] hover:border-white hover:scale-105
             text-white px-5 py-2 rounded-full gap-2 transition-all duration-200
@@ -32,14 +46,25 @@ export default function Projects({ onSetExperienceSection }: ProjectsProps) {
             shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]
             min-w-[180px]"
                         onClick={onSetExperienceSection}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         Explore All Projects
                         <GrLinkNext className="text-base" />
-                    </button>
+                    </motion.button>
                 </div>
-            </div>
-            <StickyScroll content={projectLists} />
-        </div>
+            </motion.div>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+            >
+                <StickyScroll content={projectLists} />
+            </motion.div>
+        </motion.div>
     );
 }
 

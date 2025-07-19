@@ -9,27 +9,36 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export default function ProfileCard() {
     return (
-        <div
+        <motion.div
             className="relative col-span-2 row-span-6 bg-spotify-light-dark rounded-xl p-4 max-md:p-3"
             id="#profile"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
         >
             <div className="flex flex-col gap-7 max-md:gap-5">
-                <BackgroundGradient containerClassName="rounded-[40px] place-self-center max-w-[350px]">
-                    <Image
-                        src="/toan-pfp.png"
-                        alt="Profile Image"
-                        width={350}
-                        height={350}
-                        objectFit="none"
-                        className="rounded-[25px]"
-                    />
-                </BackgroundGradient>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                >
+                    <BackgroundGradient containerClassName="rounded-[40px] place-self-center max-w-[350px]">
+                        <Image
+                            src="/toan-pfp.png"
+                            alt="Profile Image"
+                            width={350}
+                            height={350}
+                            objectFit="none"
+                            className="rounded-[25px]"
+                        />
+                    </BackgroundGradient>
+                </motion.div>
 
                 <PersonalStatement />
                 {/* <Location /> */}
                 {/* <Booking /> */}
             </div>
-        </div>
+        </motion.div>
     );
 }
 
@@ -92,14 +101,29 @@ function Booking() {
 
 function PersonalStatement() {
     return (
-        <div className="flex flex-col gap-3 px-4">
-            <div className="space-y-1.5">
+        <motion.div 
+            className="flex flex-col gap-3 px-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        >
+            <motion.div 
+                className="space-y-1.5"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
                 <h1 className="text-2xl font-semibold">Toan Pham</h1>
                 <p className="text-spotify-gray text-md">
                     Engineer • Designer • Innovator
                 </p>
-            </div>
-            <h4 className="text-sm font-semibold">
+            </motion.div>
+            <motion.h4 
+                className="text-sm font-semibold"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            >
                 I&apos;m a{" "}
                 <span className="text-spotify-green">Computer Science senior</span> at Arizona State University,
                 specializing in{" "}
@@ -119,7 +143,7 @@ function PersonalStatement() {
           creating solutions that bridge the gap between innovative technology and{" "}
                     <span className="text-spotify-green">real-world applications</span>.
         </span>
-            </h4>
-        </div>
+            </motion.h4>
+        </motion.div>
     );
 }

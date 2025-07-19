@@ -1,16 +1,26 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const SpotifyAlbum: React.FC = () => {
     return (
-        <div className="max-md:hidden max-lg:col-span-1 max-lg:row-span-1 col-span-2 row-span-2 col-start-5 row-start-7 bg-spotify-black border-t-2 rounded-xl">
-            <iframe
+        <motion.div 
+            className="max-md:hidden max-lg:col-span-1 max-lg:row-span-1 col-span-2 row-span-2 col-start-5 row-start-7 bg-spotify-black border-t-2 rounded-xl"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            whileHover={{ scale: 1.02 }}
+        >
+            <motion.iframe
                 className="w-full h-full rounded-xl"
                 src="https://open.spotify.com/embed/playlist/5Tj8FU2sM3N5du6nQvj0zT?utm_source=generator"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
                 style={{ height: "100%", width: "100%" }}
-            ></iframe>
-        </div>
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            />
+        </motion.div>
     );
 };
 

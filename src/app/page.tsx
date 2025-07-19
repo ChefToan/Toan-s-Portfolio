@@ -7,7 +7,6 @@ import GithubContributions from "@/components/sections/GithubContributions";
 
 // Lazy load components
 const ProfileCard = lazy(() => import("@/components/sections/ProfileCard"));
-const Skills = lazy(() => import("@/components/sections/Skills"));
 const Projects = lazy(() => import("@/components/sections/Projects"));
 const ProgrammingLanguages = lazy(
     () => import("@/components/sections/ProgrammingLanguages")
@@ -59,7 +58,6 @@ export default function Home() {
                             </>
                         )}
                         <OpenedProjects className="block md:hidden" />
-                        {/* <Skills /> */}
                         <GithubContributions />
                         <SpotifyAlbum />
 
