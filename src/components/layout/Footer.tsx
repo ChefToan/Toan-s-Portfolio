@@ -14,7 +14,7 @@ export default function Footer() {
                 code{" "}
                 <a
                     target="_blank"
-                    href="https://github.com/ChefToan/portfolio"
+                    href="https://github.com/ChefToan/Toan-s-Portfolio"
                     className="text-spotify-green font-semibold underline"
                 >
                     here
