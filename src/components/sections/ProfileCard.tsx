@@ -101,13 +101,13 @@ function Booking() {
 
 function PersonalStatement() {
     return (
-        <motion.div 
+        <motion.div
             className="flex flex-col gap-3 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-            <motion.div 
+            <motion.div
                 className="space-y-1.5"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -118,7 +118,7 @@ function PersonalStatement() {
                     Engineer • Designer • Innovator
                 </p>
             </motion.div>
-            <motion.h4 
+            <motion.h4
                 className="text-sm font-semibold"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -12,7 +12,7 @@ export default function ProgrammingLanguages() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
             <div className="p-6">
-                <motion.h1 
+                <motion.h1
                     className="text-xl font-bold mb-5"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -35,12 +35,14 @@ export default function ProgrammingLanguages() {
                             transition={{ 
                                 duration: 0.5, 
                                 delay: 1.0 + (index * 0.1), 
-                                ease: "easeOut" 
+                                ease: "easeOut",
+                                scale: { duration: 0.1 },
+                                y: { duration: 0.1 }
                             }}
                             whileHover={{ 
                                 scale: 1.15, 
                                 y: -5,
-                                transition: { duration: 0.2 }
+                                transition: { duration: 0.1 }
                             }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -142,6 +144,28 @@ const languageItems: {
                 width={32}
                 height={32}
                 alt="Swift"
+            />
+        ),
+    },
+    {
+        name: "Rust",
+        component: (
+            <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg"
+                width={32}
+                height={32}
+                alt="Rust"
+            />
+        ),
+    },
+    {
+        name: "Dart",
+        component: (
+            <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+                width={32}
+                height={32}
+                alt="Dart"
             />
         ),
     },

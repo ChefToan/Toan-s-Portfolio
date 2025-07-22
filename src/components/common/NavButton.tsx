@@ -7,7 +7,7 @@ interface ButtonProps {
 export default function NavButton({ name }: ButtonProps) {
     return (
         <a
-            href="/resume.pdf"
+            href="/Resume_Toan.pdf"
             target="_blank"
         >
             <button

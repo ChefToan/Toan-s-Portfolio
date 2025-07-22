@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     creator: "Toan Pham",
     authors: [{ name: "Toan Pham" }],
     icons: {
-        icon: "/favicon.svg",
-        shortcut: "/favicon.svg",
+        icon: "/toan-pfp.png",
+        shortcut: "/toan-pfp.png",
         apple: [
-            { url: "/favicon.svg" },
-            { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
+            { url: "/toan-pfp.png" },
+            { url: "/toan-pfp.png", sizes: "180x180", type: "image/png" },
         ],
     },
     openGraph: {

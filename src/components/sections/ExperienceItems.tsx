@@ -87,10 +87,22 @@ function Positions() {
             {experiences.map((position: Experience, index) => (
                 <motion.div
                     className="flex items-center gap-4 p-2.5 sm:hover:bg-[#282828] rounded-lg transition-colors group"
-                    key={position.companyName}
+                    key={`${position.companyName}-${position.positionTitle}`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                    transition={{ 
+                        duration: 0.5, 
+                        delay: 1.7 + (index * 0.1), 
+                        ease: "easeOut",
+                        scale: { duration: 0.1 },
+                        y: { duration: 0.1 }
+                    }}
+                    whileHover={{ 
+                        scale: 1.02, 
+                        y: -2,
+                        transition: { duration: 0.1 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
                 >
           <span className="text-spotify-grey sm:group-hover:text-white min-w-[20px]">
             {index + 1}
