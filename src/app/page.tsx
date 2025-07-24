@@ -30,11 +30,22 @@ export default function Home() {
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1500);
+        const minLoadTime = setTimeout(() => {
+            if (document.readyState === 'complete') {
+                setLoading(false);
+            } else {
+                const checkComplete = () => {
+                    if (document.readyState === 'complete') {
+                        setLoading(false);
+                    } else {
+                        setTimeout(checkComplete, 100);
+                    }
+                };
+                checkComplete();
+            }
+        }, 2000);
 
-        return () => clearTimeout(timer);
+        return () => clearTimeout(minLoadTime);
     }, []);
 
     return (

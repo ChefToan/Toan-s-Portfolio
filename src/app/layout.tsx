@@ -9,6 +9,7 @@ import { GeneralProvider } from "@/contexts/generalContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://toanpham.com'),
     title: "Toan Pham",
     description: "Full Stack Developer & Software Engineer",
     keywords: ["Software Engineer", "Full Stack Developer", "React", "TypeScript"],
