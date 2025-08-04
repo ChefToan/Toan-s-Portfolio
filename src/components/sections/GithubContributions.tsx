@@ -1,18 +1,92 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import GitHubCalendar from "react-github-calendar";
 import { motion } from "framer-motion";
 
 const GithubContributions: React.FC = () => {
-    const [loading, setLoading] = useState(true); // State to manage loading
+    const [loading, setLoading] = useState(true);
+    const calendarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Simulate loading time (e.g., fetching data)
         const timer = setTimeout(() => {
             setLoading(false);
         }, 0);
 
-        return () => clearTimeout(timer); // Cleanup timer on unmount
+        return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        if (!loading) {
+            const scrollToRight = () => {
+                if (window.innerWidth < 1024) {
+                    const contributionSection = document.getElementById('contribution');
+
+                    if (!contributionSection) {
+                        return false;
+                    }
+
+                    const calendarContainer = contributionSection.querySelector('.overflow-x-auto') ||
+                                             contributionSection.querySelector('[data-testid="react-github-calendar"]') ||
+                                             contributionSection.querySelector('.react-github-calendar');
+
+                    if (!calendarContainer) {
+                        return false;
+                    }
+
+                    if (calendarContainer.scrollWidth > calendarContainer.clientWidth) {
+                        const maxScrollLeft = calendarContainer.scrollWidth - calendarContainer.clientWidth;
+                        calendarContainer.scrollTo({
+                            left: maxScrollLeft,
+                            behavior: 'smooth'
+                        });
+                        return true;
+                    }
+
+                    const allElements = calendarContainer.querySelectorAll('*');
+
+                    for (const element of allElements) {
+                        const htmlElement = element as HTMLElement;
+                        if (htmlElement.scrollWidth > htmlElement.clientWidth) {
+                            const maxScrollLeft = htmlElement.scrollWidth - htmlElement.clientWidth;
+                            htmlElement.scrollTo({
+                                left: maxScrollLeft,
+                                behavior: 'smooth'
+                            });
+                            return true;
+                        }
+                    }
+
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+
+            let retryCount = 0;
+            const maxRetries = 15;
+
+            const attemptScroll = () => {
+                const success = scrollToRight();
+
+                if (!success && retryCount < maxRetries) {
+                    retryCount++;
+                    const delay = Math.min(300 * Math.pow(1.3, retryCount), 2000);
+                    setTimeout(attemptScroll, delay);
+                }
+            };
+
+            setTimeout(attemptScroll, 1000);
+
+            const handleResize = () => {
+                setTimeout(() => scrollToRight(), 200);
+            };
+
+            window.addEventListener('resize', handleResize);
+
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+        }
+    }, [loading]);
 
     return (
         <motion.div
@@ -44,16 +118,17 @@ const GithubContributions: React.FC = () => {
                 </motion.div>
             ) : (
                 <motion.div
-                    className="w-full items-center content-center justify-center justify-items-center"
+                    ref={calendarRef}
+                    className="w-full items-center content-center justify-center justify-items-center overflow-x-auto"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 >
                     <GitHubCalendar
                         username="ChefToan"
-                        blockSize={11} // Size of each block
-                        blockMargin={2} // Margin between blocks
-                        fontSize={12} // Font size for the text
+                        blockSize={11}
+                        blockMargin={2}
+                        fontSize={12}
                     />
                 </motion.div>
             )}
