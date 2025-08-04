@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Projects({ onSetExperienceSection }: ProjectsProps) {
     return (
         <motion.div
-            className="max-md:hidden max-lg:col-span-1 max-lg:row-span-1 col-span-2 row-span-6 col-start-5 bg-spotify-light-dark rounded-xl overflow-hidden flex flex-col"
+            className="max-lg:col-span-1 max-lg:row-span-1 col-span-2 row-span-6 col-start-5 bg-spotify-light-dark rounded-xl overflow-hidden flex flex-col"
             id="projects"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -85,4 +85,3 @@ export default function Projects({ onSetExperienceSection }: ProjectsProps) {
         </motion.div>
     );
 }
-

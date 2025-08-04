@@ -23,7 +23,7 @@ const GithubContributions: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
             {loading ? (
-                <motion.div 
+                <motion.div
                     className="rounded-md p-4 max-w-lg w-full mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -43,7 +43,7 @@ const GithubContributions: React.FC = () => {
                     </div>
                 </motion.div>
             ) : (
-                <motion.div 
+                <motion.div
                     className="w-full items-center content-center justify-center justify-items-center"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
